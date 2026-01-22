@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-console.log("connected to")
-mongoose.connect('mongodb+srv://arijit123roy098_db_user:arijit123roy098_db_user@cluster0.g1habdp.mongodb.net/')
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Types.ObjectId;
 
