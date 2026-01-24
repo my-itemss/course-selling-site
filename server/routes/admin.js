@@ -1,39 +1,16 @@
-const { Router } = require("express");
-const adminRouter = Router();
-const { adminModel } = require("../db/db")
+const express = require("express");
+const {
+  signup,
+  login,
+  sendOtp,
+  verifyOtp
+} = require("../controllers/admin");
 
-adminRouter.post("/signup", function (req, res) {
-  res.json({
-    message: " admin signup endpoint",
-  });
-});
+const router = express.Router();
 
-adminRouter.post("/signin", function (req, res) {
-  res.json({
-    message: " admin signin endpoint",
-  });
-});
+router.post("/signup", signup);
+router.post("/login", login);
+router.post("/send-otp", sendOtp);
+router.post("/verify-otp", verifyOtp);
 
-adminRouter.post("/course", function(rq,res){
-    res.json({
-        msg: "purchasing"
-    })
-})
-
-adminRouter.put("/course", function(rq,res){
-    res.json({
-        msg: "change"
-    })
-})
-
-
-adminRouter.get("/course/bulk" , function(req,res){
-    res.json({
-        msg : " preview"
-    })
-})
-
-
-module.exports = {
-    adminRouter : adminRouter
-}
+module.exports = router;

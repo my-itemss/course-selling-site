@@ -1,19 +1,14 @@
-const { Router } = require("express");
+const express = require("express");
+const upload = require("../middlewares/upload");
+const auth = require("../middlewares/auth");
+const {
+  createCourse,
+  getCourses
+} = require("../controllers/course");
 
-const courseRouter = Router();
+const router = express.Router();
 
-courseRouter.post("/purchase", function(rq,res){
-    res.json({
-        msg: "purchasing"
-    })
-})
+router.post("/create", auth, upload.single("thumbnail"), createCourse);
+router.get("/", getCourses);
 
-courseRouter.get("/preview" , function(req,res){
-    res.json({
-        msg : " preview"
-    })
-})
-
-module.exports = {
-    courseRouter : courseRouter
-}
+module.exports = router;
